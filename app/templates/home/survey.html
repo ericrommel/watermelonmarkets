@@ -1,0 +1,92 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %} Answer Survey {% endblock %}
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                  <br/>
+                  <form class="form form-horizontal" method="post" role="form">
+                    {% for field in form %}
+                      {% if field.name != 'csrf_token' %}
+                        <div class="form-field {{ field.name }}">
+                          <h3><label>{{ field.label }}</label></h3>
+                          <br/>
+                          {{ field() }}
+                          <span class="error">{{ field.errors[0] }}</span>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                    <div class="button-container">
+                        <button type="button" id="previous-btn" onclick="previousField()" class="btn btn-default btn-lg">Previous</button>
+                        <button type="button" id="next-btn" onclick="nextField()" class="btn btn-default btn-lg">Next</button>
+                        <button type="submit" id="submit-btn" style="display: none;" class="btn btn-default btn-lg">Submit</button>
+                    </div>
+                  </form>
+                  <script>
+                      const formFields = document.querySelectorAll('.form-field');
+                      let currentField = 0;
+                      showField(currentField);
+
+                      function showField(fieldIndex) {
+                          console.log('Showing field', fieldIndex)
+                          const previousBtn = document.getElementById('previous-btn');
+                          const nextBtn = document.getElementById('next-btn');
+                          const submitBtn = document.getElementById('submit-btn');
+
+                          formFields[currentField].style.display = 'none';
+                          formFields[fieldIndex].style.display = 'block';
+                          currentField = fieldIndex;
+
+                          if (currentField === 0) {
+                              previousBtn.style.display = 'none';
+                          } else {
+                              previousBtn.style.display = 'block';
+                          }
+
+                          if (currentField === formFields.length - 1) {
+                              nextBtn.style.display = 'none';
+                              submitBtn.style.display = 'block';
+                          } else {
+                              nextBtn.style.display = 'block';
+                              submitBtn.style.display = 'none';
+                          }
+                      }
+
+                      function nextField() {
+                          if (currentField < formFields.length - 1) {
+                              showField(currentField + 1);
+                          }
+                      }
+
+                      function previousField() {
+                          if (currentField > 0) {
+                              showField(currentField - 1);
+                          }
+                      }
+
+                      function validateField() {
+                          const currentField = document.activeElement;
+                          const nextBtn = document.getElementById('nextBtn');
+                          nextBtn.disabled = !currentField.value;
+                      }
+
+                      document.addEventListener('keydown', function(event) {
+                          if (event.code === 'ArrowRight') {
+                              nextField();
+                          } else if (event.code === 'ArrowLeft') {
+                              previousField();
+                          }
+                      });
+                  </script>
+
+                  <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

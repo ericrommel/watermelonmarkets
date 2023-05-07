@@ -1,0 +1,21 @@
+{% block title %}Thanks{% endblock %}
+{% extends "base.html" %}
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Thanks for taking the survey!</h1>
+                    <h2>We appreciate your time.</h2>
+                    <hr class="intro-divider">
+                    <a href="{{ url_for('home.solve_a_survey') }}" class="btn btn-default btn-lg">
+                        <i class="fa fa-play"></i>
+                        Take the survey again
+                    </a><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

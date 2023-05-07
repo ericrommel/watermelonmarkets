@@ -1,0 +1,47 @@
+{% block title %}Results{% endblock %}
+{% extends "base.html" %}
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>WaterMelon Market</h1>
+                    <h2>Survey Results</h2>
+                    <hr class="intro-divider">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Balance</th>
+                                <th>Price to Selling</th>
+                                <th>Crypto Network</th>
+                                <th>Wallet Address</th>
+                                <th>Email Address</th>
+                                <th>Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for response in responses %}
+                            <tr>
+                                <td>{{ response.store_name }}</td>
+                                <td>{{ response.balance }}</td>
+                                <td>{{ response.price_to_selling }}</td>
+                                {% for crypto in cryptos %}
+                                    {% if response.crypto_network == crypto.id %}
+                                <td>{{ crypto.crypto_name }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td>{{ response.wallet_address }}</td>
+                                <td>{{ response.email_address }}</td>
+                                <td>{{ response.created_at }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
