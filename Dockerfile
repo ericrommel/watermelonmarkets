@@ -16,4 +16,7 @@ RUN ["pip", "install", "-r", "requirements.txt"]
 
 COPY . ${SRC_DIR}/
 
+RUN ["flask", "db", "init"]
+RUN ["flask", "db", "migrate"]
+RUN ["flask", "db", "upgrade"]
 CMD ["flask", "run"]
