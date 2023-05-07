@@ -40,7 +40,7 @@ The default Git version is the master branch. ::
     $ cd desired/path/
     $ git clone git@github.com:ericrommel/watermelonmarket.git/
 
-The next step is install the project's Python dependencies. Just like _Git_ if you still don't have it go to the [official site](http://python.org/) and get it done. You'll also need [Pip](https://pip.pypa.io/), same rules applies here. Another interesting tool that is not required but strongly recommended is [Pipenv](http://pipenv.readthedocs.io), it helps to manage dependencies and virtual environments.
+The next step is install the project's Python dependencies. Just like _Git_ if you still don't have it go to the [official site](http://python.org/) and get it done. You'll also need [Pip](https://pip.pypa.io/), same rules applies here.
 
 Installing with **Pip**:
 
@@ -56,6 +56,7 @@ At the repo root run:
 
 Now you can use. Open http://127.0.0.1:5000 in a browser and enjoy!
 
+__*Note: Add a crypto network before start a survey: http://127.0.0.1:5000/cryto*__
 
 ### Run
 If you want to run without docker, configure the application manually. This will require you to define a few variables and create the database.
@@ -78,7 +79,7 @@ Run the application::
 
 Open http://127.0.0.1:5000 in a browser.
 
-Note: Add a crypto network before start a survey: http://127.0.0.1:5000/cryto
+__*Note: Add a crypto network before start a survey: http://127.0.0.1:5000/cryto*__
 
 
 ### Tests
