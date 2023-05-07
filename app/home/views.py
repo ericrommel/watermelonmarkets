@@ -109,19 +109,3 @@ def crypto():
         return render_template("home/index.html")
 
     return render_template("home/crypto.html", form=form, csrf_token=csrf_token)
-
-
-@home.before_request
-def before_request():
-    """
-    Save data if refreshing the page
-    """
-
-    if request.method == "GET" and request.referrer is not None and "survey" in request.referrer:
-        LOGGER.info("Page was refreshed. Get form data to save")
-        form_data = session.get("form_data")
-        if form_data:
-            LOGGER.info("There are data to be saved. Save it")
-            form = AnswerSurveyForm(data=form_data)
-            save_survey(form)
-            session.pop("form_data", None)

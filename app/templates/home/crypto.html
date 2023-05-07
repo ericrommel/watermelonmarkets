@@ -21,9 +21,9 @@
                     {% endfor %}
                     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                     <div class="button-container">
-                        <button type="button" id="previous-btn" onclick="previousField()">Previous</button>
-                        <button type="button" id="next-btn" onclick="nextField()" class="btn btn-primary">Next</button>
-                        <button type="submit" id="submit-btn" style="display: none;" >Submit</button>
+                        <button type="button" id="previous-btn" onclick="previousField()" class="btn btn-default btn-lg">Previous</button>
+                        <button type="button" id="next-btn" onclick="nextField()" class="btn btn-default btn-lg">Next</button>
+                        <button type="submit" id="submit-btn" style="display: none;" class="btn btn-default btn-lg">Submit</button>
                     </div>
                   </form>
                   <script>
