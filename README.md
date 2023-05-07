@@ -38,7 +38,7 @@ The default Git version is the master branch. ::
 
     # clone the repository
     $ cd desired/path/
-    $ git clone git@github.com:ericrommel/watermelonmarket.git/
+    $ git clone git@github.com:ericrommel/watermelonmarkets.git/
 
 The next step is install the project's Python dependencies. Just like _Git_ if you still don't have it go to the [official site](http://python.org/) and get it done. You'll also need [Pip](https://pip.pypa.io/), same rules applies here.
 
